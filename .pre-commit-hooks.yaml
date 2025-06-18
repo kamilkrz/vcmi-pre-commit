@@ -1,0 +1,7 @@
+- id: check_json_files
+  name: test check
+  description: No description for now.
+  entry: json_check
+  language: python
+  types: [json]
+  stages: [pre-commit, manual]
