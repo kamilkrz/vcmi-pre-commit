@@ -29,4 +29,4 @@ This repository provides a pre-commit hook to check the correctness and consiste
 - repo: https://github.com/your/repo
   rev: 0.0.1  # Use the appropriate tag or commit
   hooks:
-    - id: mods
+    - id: check_json_files

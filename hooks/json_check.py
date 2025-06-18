@@ -37,6 +37,7 @@ def validate_mod_ver(json_data) -> None:
             )
 
 def main() -> int:  
+    print("ANOTHER ONE")
     exit_code = PASS
     files = sys.argv[1:]
     for path in files:
