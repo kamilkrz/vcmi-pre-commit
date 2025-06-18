@@ -2,6 +2,7 @@
   name: test check
   description: No description for now.
   entry: json_check
+  require_serial: true
   language: python
   types: [json]
   stages: [pre-commit, manual]
