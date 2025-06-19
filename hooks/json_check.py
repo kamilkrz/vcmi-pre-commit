@@ -8,8 +8,18 @@ FAIL = 1
 
 
 def parse_version(ver) -> tuple:
-    """Parse a version string into a tuple of integers for comparison."""
-    return tuple(int(part) for part in re.findall(r'\d+', ver))
+    """
+    Parse a version string into a tuple of up to 3 integers (major, minor, patch) for comparison.
+    Raises ValueError if the version is not in the form X.Y or X.Y.Z with only non-negative integers (no leading zeroes).
+    """
+    # Match only valid versions: 1.2, 1.2.3, etc. No leading zeroes, only digits and dots.
+    if not re.fullmatch(r'(0|[1-9]\d*)(\.(0|[1-9]\d*)){1,2}', ver):
+        raise ValueError(
+            f"Invalid version format: '{ver}'. Must be in the form X.Y or X.Y.Z with no leading zeroes."
+        )
+    parts = ver.split('.')
+    # Only take up to the first 3 parts (major, minor, patch)
+    return tuple(int(part) for part in parts[:3])
 
 def validate_version_field(json_data) -> None:
     """Validate that the JSON data contains a 'version' field."""
